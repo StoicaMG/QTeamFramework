@@ -2,41 +2,38 @@ package Test;
 
 import Framework.TestContext.TestContext;
 import Pages.Application;
-import Pages.HomePage.HomePageActions;
 import org.junit.jupiter.api.*;
 
-public class HomePageTests {
+public class WhatIsNewPageTests {
     TestContext currentContext;
     Application app;
-
     @BeforeEach
-    void Setup(TestInfo testInfo) {
+    void Setup(TestInfo testInfo){
         currentContext = new TestContext(testInfo);
         app = new Application(currentContext);
     }
-
     @AfterEach
-    void TearDown() {
+    void TearDown(){
         currentContext.EndTest();
     }
 
     @Test
-    @DisplayName("Open Homepage 1")
-    void homePage1Test() {
+    @DisplayName("Open WhatIsNew page 1")
+    void whatIsNewPage1Test() {
         app.HomePage().UserIsOnHomePage();
         app.HomePage().ClickOnWhatIsNewButton();
     }
 
     @Test
-    @DisplayName("Open Homepage 2")
-    void homePage2Test() {
+    @DisplayName("Open WhatIsNew page 2")
+    void whatIsNewPage2Test() {
         app.HomePage().UserIsOnHomePage();
         app.HomePage().ClickOnWhatIsNewButton();
     }
 
     @Test
-    @DisplayName("Open Homepage 3")
-    void homePage3Test() {
+    @DisplayName("Open WhatIsNew page 3")
+    void whatIsNewPage3Test() {
         app.HomePage().UserIsOnHomePage();
         app.HomePage().ClickOnWhatIsNewButton();
     }

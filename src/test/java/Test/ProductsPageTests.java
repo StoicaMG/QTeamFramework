@@ -3,18 +3,15 @@ package Test;
 
 import Framework.TestContext.TestContext;
 import Pages.Application;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class ProductsPageTests {
     TestContext currentContext;
     Application app;
 
     @BeforeEach
-    void Setup() {
-        currentContext = new TestContext();
+    void Setup(TestInfo testInfo) {
+        currentContext = new TestContext(testInfo);
         app = new Application(currentContext);
     }
 
@@ -24,9 +21,23 @@ public class ProductsPageTests {
     }
 
     @Test
-    @DisplayName("Open Product Page")
-    void productPageTest() {
+    @DisplayName("Open Product Page 1")
+    void productPage1Test() {
         app.ProductPage().UserIsOnProductsPage();
-        app.HomePage().UserIsOnHomePage();
+        app.HomePage().ClickOnWhatIsNewButton();
+    }
+
+    @Test
+    @DisplayName("Open Product Page 2")
+    void productPage2Test() {
+        app.ProductPage().UserIsOnProductsPage();
+        app.HomePage().ClickOnWhatIsNewButton();
+    }
+
+    @Test
+    @DisplayName("Open Product Page 3")
+    void productPage3Test() {
+        app.ProductPage().UserIsOnProductsPage();
+        app.HomePage().ClickOnWhatIsNewButton();
     }
 }

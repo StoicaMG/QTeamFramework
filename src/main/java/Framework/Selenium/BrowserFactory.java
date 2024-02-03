@@ -10,14 +10,21 @@ public class BrowserFactory {
     public String browser = System.getProperty("BROWSER").toLowerCase();
 
     public WebDriver StartBrowser() {
+        WebDriver driver;
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
-                return new ChromeDriver();
+                driver = new ChromeDriver();
+                driver.manage().window().maximize();
+                return driver;
             case "firefox":
-                return new FirefoxDriver();
+                driver = new FirefoxDriver();
+                driver.manage().window().maximize();
+                return driver;
             case "edge":
-                return new EdgeDriver();
+                driver = new EdgeDriver();
+                driver.manage().window().maximize();
+                return driver;
             default:
                 Assertions.fail("Used browser [" + browser + "] is not recognized");
         }
