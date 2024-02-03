@@ -1,17 +1,18 @@
 package Framework.TestContext;
 
 import Framework.Selenium.BrowserFactory;
+import org.openqa.selenium.WebDriver;
 
 public class TestContext {
-    public BrowserFactory browser;
+    public WebDriver driver;
 
-    public void StartTest() {
-        browser = new BrowserFactory();
-        System.out.println(browser.driver);
+    public TestContext() {
+        driver = new BrowserFactory().StartBrowser();
+        System.out.println(driver);
     }
 
     public void EndTest() {
-        System.out.println(browser.driver);
-        BrowserFactory.QuitBrowser(this.browser.driver);
+        System.out.println(driver);
+        BrowserFactory.QuitBrowser(this.driver);
     }
 }

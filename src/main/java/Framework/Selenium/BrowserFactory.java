@@ -7,27 +7,21 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserFactory {
-    public WebDriver driver = null;
     public String browser = System.getProperty("BROWSER").toLowerCase();
 
-    public BrowserFactory() {
+    public WebDriver StartBrowser() {
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
-                driver = new ChromeDriver();
-                driver.manage().window().maximize();
-                break;
+                return new ChromeDriver();
             case "firefox":
-                driver = new FirefoxDriver();
-                driver.manage().window().maximize();
-                break;
+                return new FirefoxDriver();
             case "edge":
-                driver = new EdgeDriver();
-                driver.manage().window().maximize();
-                break;
+                return new EdgeDriver();
             default:
                 Assertions.fail("Used browser [" + browser + "] is not recognized");
         }
+        return null;
     }
 
     public static void QuitBrowser(WebDriver driver) {
