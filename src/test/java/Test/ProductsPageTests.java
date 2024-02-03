@@ -1,6 +1,5 @@
 package Test;
 
-
 import Framework.TestContext.TestContext;
 import Pages.Application;
 import org.junit.jupiter.api.*;

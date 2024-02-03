@@ -1,9 +1,6 @@
 package Pages.HomePage;
 
-import Framework.Elements.BaseElement;
 import Framework.TestContext.TestContext;
-import Framework.Browser.BrowserActions;
-import org.openqa.selenium.By;
 
 public class HomePageActions extends HomePageElements {
 
@@ -18,5 +15,4 @@ public class HomePageActions extends HomePageElements {
     public void ClickOnWhatIsNewButton(){
         getWhatsNewButton().click();
     }
-
 }

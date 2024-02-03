@@ -1,6 +1,5 @@
 package Framework.Elements;
 
-import Framework.TestContext.TestContext;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -20,7 +19,7 @@ public class BaseElement {
         this.driver = driver;
     }
 
-    public boolean scrollToElement() throws Exception {
+    public boolean scrollToElement() {
         if (loadElement(3, 5)) {
             Actions action = new Actions(driver);
             action.moveToElement(this.element);

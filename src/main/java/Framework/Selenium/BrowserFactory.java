@@ -34,4 +34,20 @@ public class BrowserFactory {
     public static void QuitBrowser(WebDriver driver) {
         driver.quit();
     }
+
+    public static void OpenPage(WebDriver driver, String url) {
+        driver.get(url);
+    }
+
+    public static void RefreshPage(WebDriver driver) {
+        driver.navigate().refresh();
+    }
+
+    public static void GetPageTitle(WebDriver driver) {
+        driver.getTitle();
+    }
+
+    public static void MaximizePage(WebDriver driver) {
+        driver.manage().window().maximize();
+    }
 }

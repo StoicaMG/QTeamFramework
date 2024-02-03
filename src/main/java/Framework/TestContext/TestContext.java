@@ -1,6 +1,5 @@
 package Framework.TestContext;
 
-import Framework.Browser.BrowserActions;
 import Framework.Selenium.BrowserFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.TestInfo;
@@ -11,14 +10,12 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.io.IOException;
 
-
 public class TestContext {
     public WebDriver driver;
     public TestInfo testInfo;
 
     public TestContext(TestInfo testInfo) {
         driver = new BrowserFactory().StartBrowser();
-        BrowserActions.MaximizePage(driver);
         this.testInfo = testInfo;
         System.out.println(driver);
     }
