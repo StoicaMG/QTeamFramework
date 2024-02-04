@@ -45,7 +45,7 @@ public class BaseElement {
         throw new Exception("Element was not loaded: [" + this.locator + "]");
     }
 
-    public boolean isDisplayed(){
+    public boolean isDisplayed() {
         if (loadElement(3, 5))
             try {
                 return this.element.isDisplayed();
@@ -56,14 +56,15 @@ public class BaseElement {
         return false;
     }
 
-    public String innerText() throws Exception {
+    public String innerText() {
         if (loadElement(3, 5))
             try {
                 return this.element.getText();
             } catch (Exception e) {
-                throw new Exception("Could not return Text attribute of element [" + this.locator + "] \n Logs: \n " + e);
+                Assertions.fail("Could not return Text attribute of element [" + this.locator + "] \n Logs: \n " + e);
             }
-        throw new Exception("Element was not loaded: [" + this.locator + "]");
+        Assertions.fail("Element was not loaded: [" + this.locator + "]");
+        return "Element was not loaded: [" + this.locator + "]";
     }
 
     public void submit() throws Exception {

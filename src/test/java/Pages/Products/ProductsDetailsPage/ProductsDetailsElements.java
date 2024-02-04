@@ -20,7 +20,6 @@ public class ProductsDetailsElements {
         return new TextField(By.cssSelector("input.qty"), currentContext.driver);
     }
 
-
     protected BaseElement getAddProductToCartButton() {
         return new BaseElement(By.cssSelector("button#product-addtocart-button"), currentContext.driver);
     }

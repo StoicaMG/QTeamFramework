@@ -27,7 +27,7 @@ public class HomePageTests {
                 .ProductCard().AddProductToCartByNameSizeAndColour("Radiant Tee", "M", "Purple");
 
         app.Notification()
-                .ValidateSuccessNotificationMessageIsDisplayed("You added Radiant Tee");
+                .ValidateSuccessNotificationMessageIsDisplayed("You added Radiant Tee to your shopping cart.");
 
         app.HomePage()
                 .ProductCard().OpenProductDetailsPage("Radiant Tee");

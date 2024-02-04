@@ -9,6 +9,7 @@ public class NotificationsSteps extends NotificationsElements {
     }
 
     public void ValidateSuccessNotificationMessageIsDisplayed(String message) {
-        Assertions.assertTrue(getSuccessNotification(message).isDisplayed(), "Success notification with message [" + message + "] is not displayed");
+        Assertions.assertTrue(getSuccessNotification().isDisplayed(), "Success notification is not displayed");
+        Assertions.assertTrue(getSuccessNotification().innerText().contains(message), "Expected success notification [" + message + "] is not displayed, but actual notification is [" + getSuccessNotification().innerText() + "]");
     }
 }
