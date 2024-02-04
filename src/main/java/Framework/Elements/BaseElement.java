@@ -19,13 +19,20 @@ public class BaseElement {
         this.driver = driver;
     }
 
-    public boolean scrollToElement() {
+    public void scrollToElement() {
         if (loadElement(3, 5)) {
             Actions action = new Actions(driver);
             action.moveToElement(this.element);
             action.perform();
         }
-        return true;
+    }
+
+    public void hoverElement() {
+        if (loadElement(3, 5)) {
+            Actions action = new Actions(driver);
+            action.moveToElement(this.element);
+            action.perform();
+        }
     }
 
     public boolean isSelected() throws Exception {
@@ -36,6 +43,17 @@ public class BaseElement {
                 throw new Exception("Could not return Selected attribute of element [" + this.locator + "] \n Logs: \n " + e);
             }
         throw new Exception("Element was not loaded: [" + this.locator + "]");
+    }
+
+    public boolean isDisplayed(){
+        if (loadElement(3, 5))
+            try {
+                return this.element.isDisplayed();
+            } catch (Exception e) {
+                Assertions.fail("Could not return Displayed attribute of element [" + this.locator + "] \n Logs: \n " + e);
+            }
+        Assertions.fail("Element was not loaded: [" + this.locator + "]");
+        return false;
     }
 
     public String innerText() throws Exception {

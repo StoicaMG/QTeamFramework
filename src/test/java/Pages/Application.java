@@ -1,9 +1,9 @@
 package Pages;
 
 import Framework.TestContext.TestContext;
-import Pages.HomePage.HomePageActions;
-import Pages.ProductsPage.ProductsPageActions;
-import Pages.WhatIsNewPage.WhatIsNewPageActions;
+import Pages.HomePage.HomePageSteps;
+import Pages.Notifications.NotificationsSteps;
+import Pages.Products.ProductsDetailsPage.ProductsDetailsSteps;
 
 public class Application {
     TestContext currentContext;
@@ -12,15 +12,14 @@ public class Application {
         this.currentContext = currentContext;
     }
 
-    public HomePageActions HomePage() {
-        return new HomePageActions(currentContext);
+    public HomePageSteps HomePage() {
+        return new HomePageSteps(currentContext);
     }
 
-    public ProductsPageActions ProductPage() {
-        return new ProductsPageActions(currentContext);
+    public ProductsDetailsSteps ProductDetailsPage() {
+        return new ProductsDetailsSteps(currentContext);
     }
 
-    public WhatIsNewPageActions WhatIsNewPage() {
-        return new WhatIsNewPageActions(currentContext);
-    }
+    public NotificationsSteps Notification(){ return new NotificationsSteps(currentContext);}
+
 }

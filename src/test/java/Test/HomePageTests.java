@@ -20,23 +20,16 @@ public class HomePageTests {
     }
 
     @Test
-    @DisplayName("Open Homepage 1")
-    void homePage1Test() {
-        app.HomePage().UserIsOnHomePage();
-        app.HomePage().ClickOnWhatIsNewButton();
-    }
+    @DisplayName("Add product from Home page and validate checkout")
+    void homePageTest() {
+        app.HomePage()
+                .UserIsOnHomePage()
+                .ProductCard().AddProductToCartByNameSizeAndColour("Radiant Tee", "M", "Purple");
 
-    @Test
-    @DisplayName("Open Homepage 2")
-    void homePage2Test() {
-        app.HomePage().UserIsOnHomePage();
-        app.HomePage().ClickOnWhatIsNewButton();
-    }
+        app.Notification()
+                .ValidateSuccessNotificationMessageIsDisplayed("You added Radiant Tee");
 
-    @Test
-    @DisplayName("Open Homepage 3")
-    void homePage3Test() {
-        app.HomePage().UserIsOnHomePage();
-        app.HomePage().ClickOnWhatIsNewButton();
+        app.HomePage()
+                .ProductCard().OpenProductDetailsPage("Radiant Tee");
     }
 }

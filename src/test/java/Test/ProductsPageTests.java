@@ -20,23 +20,17 @@ public class ProductsPageTests {
     }
 
     @Test
-    @DisplayName("Open Product Page 1")
-    void productPage1Test() {
-        app.ProductPage().UserIsOnProductsPage();
-        app.HomePage().ClickOnWhatIsNewButton();
-    }
+    @DisplayName("Add product from Products Details page and validate checkout")
+    void homePageTest() {
+        app.HomePage()
+                .UserIsOnHomePage()
+                .ProductCard().OpenProductDetailsPage("Radiant Tee");
 
-    @Test
-    @DisplayName("Open Product Page 2")
-    void productPage2Test() {
-        app.ProductPage().UserIsOnProductsPage();
-        app.HomePage().ClickOnWhatIsNewButton();
-    }
+        app.ProductDetailsPage()
+                .SelectSizeColourAndQuantity("XL", "Purple", "2")
+                .AddProductToCart();
 
-    @Test
-    @DisplayName("Open Product Page 3")
-    void productPage3Test() {
-        app.ProductPage().UserIsOnProductsPage();
-        app.HomePage().ClickOnWhatIsNewButton();
+        app.Notification()
+                .ValidateSuccessNotificationMessageIsDisplayed("You added Radiant Tee");
     }
 }
