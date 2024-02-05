@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BrowserFactory {
     public String browser = System.getProperty("BROWSER").toLowerCase();
 
-    public WebDriver StartBrowser() {
+    public WebDriver startBrowser() {
         WebDriver driver;
         switch (browser) {
             case "chrome":
@@ -31,23 +31,11 @@ public class BrowserFactory {
         return null;
     }
 
-    public static void QuitBrowser(WebDriver driver) {
+    public static void quitBrowser(WebDriver driver) {
         driver.quit();
     }
 
-    public static void OpenPage(WebDriver driver, String url) {
+    public static void openPage(WebDriver driver, String url) {
         driver.get(url);
-    }
-
-    public static void RefreshPage(WebDriver driver) {
-        driver.navigate().refresh();
-    }
-
-    public static void GetPageTitle(WebDriver driver) {
-        driver.getTitle();
-    }
-
-    public static void MaximizePage(WebDriver driver) {
-        driver.manage().window().maximize();
     }
 }

@@ -3,7 +3,6 @@ package Pages.HomePage;
 import Framework.Selenium.BrowserFactory;
 import Framework.TestContext.TestContext;
 import Pages.Products.ProductsCard.ProductsCardSteps;
-import Pages.Notifications.NotificationsSteps;
 
 public class HomePageSteps extends HomePageElements {
 
@@ -15,7 +14,7 @@ public class HomePageSteps extends HomePageElements {
 
 
     public HomePageSteps UserIsOnHomePage() {
-        BrowserFactory.OpenPage(currentContext.driver, "https://magento.softwaretestingboard.com/");
+        BrowserFactory.openPage(currentContext.driver, "https://magento.softwaretestingboard.com/");
         return this;
     }
 }

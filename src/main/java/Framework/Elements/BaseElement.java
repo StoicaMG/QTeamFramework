@@ -35,16 +35,6 @@ public class BaseElement {
         }
     }
 
-    public boolean isSelected() throws Exception {
-        if (loadElement(3, 5))
-            try {
-                return this.element.isSelected();
-            } catch (Exception e) {
-                throw new Exception("Could not return Selected attribute of element [" + this.locator + "] \n Logs: \n " + e);
-            }
-        throw new Exception("Element was not loaded: [" + this.locator + "]");
-    }
-
     public boolean isDisplayed() {
         if (loadElement(3, 5))
             try {
@@ -67,16 +57,6 @@ public class BaseElement {
         return "Element was not loaded: [" + this.locator + "]";
     }
 
-    public void submit() throws Exception {
-        if (loadElement(3, 5))
-            try {
-                this.element.submit();
-            } catch (Exception e) {
-                throw new Exception("Could not return Submit on element [" + this.locator + "] \n Logs: \n " + e);
-            }
-        throw new Exception("Element was not loaded: [" + this.locator + "]");
-    }
-
     public void click() {
         if (loadElement(3, 5))
             try {
@@ -90,7 +70,7 @@ public class BaseElement {
             }
     }
 
-    public boolean loadElement(int retryAttempts, int timeout) {
+    public Boolean loadElement(int retryAttempts, int timeout) {
         if (this.element == null && waitElementToBeVisibleInDOM(timeout)) {
             try {
                 this.element = driver.findElement(this.locator);
@@ -119,10 +99,15 @@ public class BaseElement {
         wait.until(ExpectedConditions.visibilityOfElementLocated(this.locator));
     }
 
+    public void waitElementToDisappear(int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.pollingEvery(Duration.ofMillis(200));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(this.locator));
+    }
+
     public void waitElementToBeClickable(int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.pollingEvery(Duration.ofMillis(200));
         wait.until(ExpectedConditions.elementToBeClickable(this.locator));
     }
-
 }

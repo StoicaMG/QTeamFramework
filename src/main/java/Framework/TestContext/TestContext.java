@@ -15,15 +15,15 @@ public class TestContext {
     public TestInfo testInfo;
 
     public TestContext(TestInfo testInfo) {
-        driver = new BrowserFactory().StartBrowser();
+        driver = new BrowserFactory().startBrowser();
         this.testInfo = testInfo;
         System.out.println(driver);
     }
 
-    public void EndTest() {
+    public void endTest() {
         System.out.println(driver);
         takeScreenshot();
-        BrowserFactory.QuitBrowser(this.driver);
+        BrowserFactory.quitBrowser(this.driver);
 
     }
 

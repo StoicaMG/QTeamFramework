@@ -7,15 +7,19 @@ public class ProductsDetailsSteps extends ProductsDetailsElements{
         this.currentContext = currentContext;
     }
 
-    public ProductsDetailsSteps SelectSizeColourAndQuantity(String size, String colour, String quantity){
+    public ProductsDetailsSteps selectSizeColourAndQuantity(String size, String colour, String quantity){
+        getSize(size).waitElementToBeClickable(15);
         getSize(size).click();
+        getColour(colour).waitElementToBeClickable(15);
         getColour(colour).click();
+        getQuantity().waitElementToBeClickable(15);
         getQuantity().clearField();
         getQuantity().sendKeys(quantity);
         return this;
     }
 
-    public ProductsDetailsSteps AddProductToCart(){
+    public ProductsDetailsSteps addProductToCart(){
+        getAddProductToCartButton().waitElementToBeClickable(15);
         getAddProductToCartButton().click();
         return this;
     }

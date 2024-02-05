@@ -7,14 +7,15 @@ public class ProductsCardSteps extends ProductCardElements {
         this.currentContext = currentContext;
     }
 
-    public void AddProductToCartByNameSizeAndColour(String productName, String productColour, String productSize) {
+    public ProductsCardSteps addProductToCartByNameSizeAndColour(String productName, String productColour, String productSize) {
         getProductSizeOption(productName, productSize).click();
         getProductColourOption(productName, productColour).click();
         getProductCardByName(productName).hoverElement();
         getProductAddToCart(productName).click();
+        return this;
     }
 
-    public void OpenProductDetailsPage(String productName) {
+    public void openProductDetailsPage(String productName) {
         getProductCardByName(productName).click();
     }
 }

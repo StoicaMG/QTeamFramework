@@ -8,8 +8,8 @@ public class NotificationsSteps extends NotificationsElements {
         this.currentContext = currentContext;
     }
 
-    public void ValidateSuccessNotificationMessageIsDisplayed(String message) {
-        Assertions.assertTrue(getSuccessNotification().isDisplayed(), "Success notification is not displayed");
+    public void validateSuccessNotificationMessageIsDisplayed(String message) {
+        getSuccessNotification().waitElementToBeDisplayed(15);
         Assertions.assertTrue(getSuccessNotification().innerText().contains(message), "Expected success notification [" + message + "] is not displayed, but actual notification is [" + getSuccessNotification().innerText() + "]");
     }
 }

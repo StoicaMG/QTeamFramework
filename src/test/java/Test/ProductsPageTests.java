@@ -9,28 +9,37 @@ public class ProductsPageTests {
     Application app;
 
     @BeforeEach
-    void Setup(TestInfo testInfo) {
+    void setup(TestInfo testInfo) {
         currentContext = new TestContext(testInfo);
         app = new Application(currentContext);
     }
 
     @AfterEach
-    void TearDown() {
-        currentContext.EndTest();
+    void tearDown() {
+        currentContext.endTest();
     }
 
     @Test
-    @DisplayName("Add product from Products Details page and validate checkout")
-    void homePageTest() {
+    @DisplayName("Add product from Products Details page and validate Cart Modal")
+    void productsDetailsPageTest() {
         app.HomePage()
                 .UserIsOnHomePage()
-                .ProductCard().OpenProductDetailsPage("Radiant Tee");
+                .ProductCard().openProductDetailsPage("Radiant Tee");
 
         app.ProductDetailsPage()
-                .SelectSizeColourAndQuantity("XL", "Purple", "2")
-                .AddProductToCart();
+                .selectSizeColourAndQuantity("XL", "Purple", "1")
+                .addProductToCart();
 
         app.Notification()
-                .ValidateSuccessNotificationMessageIsDisplayed("You added Radiant Tee");
+                .validateSuccessNotificationMessageIsDisplayed("You added Radiant Tee");
+
+        app.HeaderNavigation().openCartModal();
+
+        app.CartModal()
+                .ValidateCartModalIsDisplayed()
+                .ValidateNumberOfItemsInCart(1)
+                .ValidateCartModalSubtotal("$22.00")
+                .ValidateProductIsDisplayedInCartModal("Radiant Tee")
+                .ProceedToCheckout();
     }
 }

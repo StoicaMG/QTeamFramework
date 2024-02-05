@@ -14,4 +14,16 @@ public class NavigationMenuElements {
     protected BaseElement getNavigationMenuOption(String option) {
         return new BaseElement(By.xpath("//nav[@class='navigation']/ul/li[a/span[text()=\"" + option + "\"]]"), currentContext.driver);
     }
+
+    protected BaseElement getCartButton() {
+        return new BaseElement(By.xpath("//div[@data-block='minicart']"), currentContext.driver);
+    }
+
+    protected BaseElement getCartModal() {
+        return new BaseElement(By.xpath("//div[@data-role='dropdownDialog']"), currentContext.driver);
+    }
+
+    protected BaseElement getCartCounterNumber(String counterNumber) {
+        return new BaseElement(By.xpath("//span[@class='counter qty']/span[@class='counter-number'][text()='" + counterNumber + "']"), currentContext.driver);
+    }
 }

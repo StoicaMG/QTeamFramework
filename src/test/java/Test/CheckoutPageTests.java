@@ -4,7 +4,7 @@ import Framework.TestContext.TestContext;
 import Pages.Application;
 import org.junit.jupiter.api.*;
 
-public class HomePageTests {
+public class CheckoutPageTests {
     TestContext currentContext;
     Application app;
 
@@ -20,8 +20,8 @@ public class HomePageTests {
     }
 
     @Test
-    @DisplayName("Add product from Home page and validate cart modal")
-    void homePageTest() {
+    @DisplayName("Add products and validate checkout page")
+    void checkoutPageTest() {
         app.HomePage()
                 .UserIsOnHomePage()
                 .ProductCard().addProductToCartByNameSizeAndColour("Radiant Tee", "M", "Purple");
@@ -32,13 +32,18 @@ public class HomePageTests {
         app.Notification()
                 .validateSuccessNotificationMessageIsDisplayed("You added Radiant Tee to your shopping cart.");
 
-        app.HeaderNavigation().openCartModal();
+        app.HeaderNavigation()
+                .openCartModal();
 
         app.CartModal()
-                .ValidateCartModalIsDisplayed()
-                .ValidateNumberOfItemsInCart(1)
-                .ValidateCartModalSubtotal("$22.00")
-                .ValidateProductIsDisplayedInCartModal("Radiant Tee")
                 .ProceedToCheckout();
+
+        app.CheckoutPage()
+                .validateOrderSummaryContainsCorrectProduct("1", "Radiant Tee", "Qty 1", "$22.00", "M", "Purple");
+
+        app.CheckoutPage()
+                .completeCheckoutMandatoryFields("mircea@gmail.com", "Mircea", "Stoica", "Bulevardul Garii", "Braşov", "Braşov", "500227", "Romania", "0748123456", "$5.00")
+                .placeOrder()
+                .validateOrderWasPlacedSuccessfully("Thank you for your purchase!");
     }
 }

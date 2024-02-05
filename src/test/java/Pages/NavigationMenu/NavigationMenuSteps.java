@@ -7,17 +7,27 @@ public class NavigationMenuSteps extends NavigationMenuElements {
         this.currentContext = currentContext;
     }
 
-    public void ClickWhatIsNewButton() {
+    public void clickWhatIsNewButton() {
         getWhatsNewButton().click();
     }
 
-    public NavigationMenuSteps ClickNavigationDropDown(String menuOption) {
+    public NavigationMenuSteps clickNavigationDropDown(String menuOption) {
         getNavigationMenuOption(menuOption).click();
         return this;
     }
 
-    public NavigationMenuSteps HoverNavigationDropDown(String menuOption){
+    public NavigationMenuSteps hoverNavigationDropDown(String menuOption) {
         getNavigationMenuOption(menuOption).hoverElement();
         return this;
+    }
+
+    public NavigationMenuSteps openCartModal() {
+        getCartButton().click();
+        getCartModal().waitElementToBeDisplayed(15);
+        return this;
+    }
+
+    public void waitForCartToUpdate(String number) {
+        getCartCounterNumber(number).waitElementToBeDisplayed(15);
     }
 }
