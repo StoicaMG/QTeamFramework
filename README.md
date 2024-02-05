@@ -9,7 +9,7 @@ This repository contains a Java-based automation framework for web testing using
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Tests](#tests)
-- [Run tests in parallel](#Run tests in parallel)
+- [Run Tests in Parallel](#run-tests-in-parallel)
 
 ## Introduction
 
