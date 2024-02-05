@@ -1,6 +1,6 @@
 # Automated Testing Framework
 
-This repository contains a Java-based automation framework for web testing using Maven, Selenium, and JUnit 5.
+This repository contains a Java-based automation framework for web testing using Maven, Selenium, and JUnit 5. 
 
 ## Table of Contents
 
